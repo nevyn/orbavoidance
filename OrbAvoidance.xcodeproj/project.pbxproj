@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05FE56C1104D9B7F00FE34B9 /* OrbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE56C0104D9B7F00FE34B9 /* OrbView.m */; };
+		05FE56C8104D9BEB00FE34B9 /* OrbWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE56C7104D9BEB00FE34B9 /* OrbWindow.m */; };
+		05FE56E9104DA06400FE34B9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FE56E8104DA06400FE34B9 /* Quartz.framework */; };
+		05FE5719104DA53B00FE34B9 /* Frustum.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE570E104DA53B00FE34B9 /* Frustum.m */; };
+		05FE571A104DA53B00FE34B9 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5710104DA53B00FE34B9 /* Matrix.m */; };
+		05FE571B104DA53B00FE34B9 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5712104DA53B00FE34B9 /* Plane.m */; };
+		05FE571C104DA53B00FE34B9 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5714104DA53B00FE34B9 /* Vector2.m */; };
+		05FE571D104DA53B00FE34B9 /* Vector3.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5716104DA53B00FE34B9 /* Vector3.m */; };
+		05FE571E104DA53B00FE34B9 /* Vector4.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5718104DA53B00FE34B9 /* Vector4.m */; };
+		05FE57C2104DCDEC00FE34B9 /* TCCAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE57C1104DCDEC00FE34B9 /* TCCAAdditions.m */; };
+		05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */; };
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05FE56BF104D9B7F00FE34B9 /* OrbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrbView.h; sourceTree = "<group>"; };
+		05FE56C0104D9B7F00FE34B9 /* OrbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrbView.m; sourceTree = "<group>"; };
+		05FE56C6104D9BEB00FE34B9 /* OrbWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrbWindow.h; sourceTree = "<group>"; };
+		05FE56C7104D9BEB00FE34B9 /* OrbWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrbWindow.m; sourceTree = "<group>"; };
+		05FE56E8104DA06400FE34B9 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
+		05FE570D104DA53B00FE34B9 /* Frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frustum.h; sourceTree = "<group>"; };
+		05FE570E104DA53B00FE34B9 /* Frustum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Frustum.m; sourceTree = "<group>"; };
+		05FE570F104DA53B00FE34B9 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		05FE5710104DA53B00FE34B9 /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
+		05FE5711104DA53B00FE34B9 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		05FE5712104DA53B00FE34B9 /* Plane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plane.m; sourceTree = "<group>"; };
+		05FE5713104DA53B00FE34B9 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		05FE5714104DA53B00FE34B9 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
+		05FE5715104DA53B00FE34B9 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		05FE5716104DA53B00FE34B9 /* Vector3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector3.m; sourceTree = "<group>"; };
+		05FE5717104DA53B00FE34B9 /* Vector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector4.h; sourceTree = "<group>"; };
+		05FE5718104DA53B00FE34B9 /* Vector4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector4.m; sourceTree = "<group>"; };
+		05FE57C0104DCDEC00FE34B9 /* TCCAAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCAAdditions.h; sourceTree = "<group>"; };
+		05FE57C1104DCDEC00FE34B9 /* TCCAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCAAdditions.m; sourceTree = "<group>"; };
+		05FE58AF104DDD6F00FE34B9 /* TCBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlockAdditions.h; sourceTree = "<group>"; };
+		05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlockAdditions.m; sourceTree = "<group>"; };
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrbAvoidanceAppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrbAvoidanceAppDelegate.m; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* OrbAvoidance_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrbAvoidance_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* OrbAvoidance-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OrbAvoidance-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* OrbAvoidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrbAvoidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				05FE56E9104DA06400FE34B9 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05FE570C104DA53B00FE34B9 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				05FE570D104DA53B00FE34B9 /* Frustum.h */,
+				05FE570E104DA53B00FE34B9 /* Frustum.m */,
+				05FE570F104DA53B00FE34B9 /* Matrix.h */,
+				05FE5710104DA53B00FE34B9 /* Matrix.m */,
+				05FE5711104DA53B00FE34B9 /* Plane.h */,
+				05FE5712104DA53B00FE34B9 /* Plane.m */,
+				05FE5713104DA53B00FE34B9 /* Vector2.h */,
+				05FE5714104DA53B00FE34B9 /* Vector2.m */,
+				05FE5715104DA53B00FE34B9 /* Vector3.h */,
+				05FE5716104DA53B00FE34B9 /* Vector3.m */,
+				05FE5717104DA53B00FE34B9 /* Vector4.h */,
+				05FE5718104DA53B00FE34B9 /* Vector4.m */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3D80F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */,
+				05FE56BF104D9B7F00FE34B9 /* OrbView.h */,
+				05FE56C0104D9B7F00FE34B9 /* OrbView.m */,
+				05FE56C6104D9BEB00FE34B9 /* OrbWindow.h */,
+				05FE56C7104D9BEB00FE34B9 /* OrbWindow.m */,
+				05FE570C104DA53B00FE34B9 /* Math */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* OrbAvoidance.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* OrbAvoidance */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = OrbAvoidance;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3F00F4B6AF500CF3369 /* OrbAvoidance_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				05FE57C0104DCDEC00FE34B9 /* TCCAAdditions.h */,
+				05FE57C1104DCDEC00FE34B9 /* TCCAAdditions.m */,
+				05FE58AF104DDD6F00FE34B9 /* TCBlockAdditions.h */,
+				05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107310486CEB800E47090 /* OrbAvoidance-Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				05FE56E8104DA06400FE34B9 /* Quartz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* OrbAvoidance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "OrbAvoidance" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OrbAvoidance;
+			productInstallPath = "$(HOME)/Applications";
+			productName = OrbAvoidance;
+			productReference = 8D1107320486CEB800E47090 /* OrbAvoidance.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OrbAvoidance" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* OrbAvoidance */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* OrbAvoidance */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */,
+				05FE56C1104D9B7F00FE34B9 /* OrbView.m in Sources */,
+				05FE56C8104D9BEB00FE34B9 /* OrbWindow.m in Sources */,
+				05FE5719104DA53B00FE34B9 /* Frustum.m in Sources */,
+				05FE571A104DA53B00FE34B9 /* Matrix.m in Sources */,
+				05FE571B104DA53B00FE34B9 /* Plane.m in Sources */,
+				05FE571C104DA53B00FE34B9 /* Vector2.m in Sources */,
+				05FE571D104DA53B00FE34B9 /* Vector3.m in Sources */,
+				05FE571E104DA53B00FE34B9 /* Vector4.m in Sources */,
+				05FE57C2104DCDEC00FE34B9 /* TCCAAdditions.m in Sources */,
+				05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OrbAvoidance_Prefix.pch;
+				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = OrbAvoidance;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = OrbAvoidance_Prefix.pch;
+				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = OrbAvoidance;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "OrbAvoidance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OrbAvoidance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
