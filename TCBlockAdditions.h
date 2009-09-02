@@ -13,3 +13,5 @@ typedef BOOL (^TCArrayFilter) (id obj);
 @interface NSArray (TCFunctionalArray)
 -(NSArray*)filteredArray:(TCArrayFilter)filter;
 @end
+
+extern void TCAfter(NSTimeInterval interval, dispatch_block_t do_);

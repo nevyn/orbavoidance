@@ -18,12 +18,19 @@
 	uint32_t level;
 	float score;
 	float multiplier;
+	CAGradientLayer *multiplierIndicator;
+	
+	CAEmitterCell *ignition, *explosionCell;
 }
 -(NSArray*)orbs;
 -(NSArray*)squares;
 
+-(void)explodeAt:(CGPoint)p;
+
 -(void)clear;
 -(void)levelUp;
+@property float score;
+@property float multiplier;
 @end
 
 @interface Orb : CALayer {

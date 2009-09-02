@@ -7,7 +7,7 @@
 //
 
 #import "OrbWindow.h"
-
+#import "TCBlockAdditions.h"
 
 @implementation OrbWindow
 - (id)initWithContentRect:(NSRect)contentRect
@@ -28,7 +28,30 @@
 	[self setIgnoresMouseEvents:YES];
 	[self setBackgroundColor:[NSColor clearColor]];
 	[self setOpaque:NO];
+	
+	[self setBackgroundColor:[NSColor colorWithDeviceWhite:1.0 alpha:0.1]];
+
+	
+	TCAfter(0.01, ^ {
+		NSInteger compositingType = 1 << 0; // Under the window
+		/* Make a new connection to CoreGraphics */
+		CGSNewConnection(NULL, &thisConnection);
+		/* Create a CoreImage filter and set it up */
+		CGSNewCIFilterByName(thisConnection, (CFStringRef)@"CIGaussianBlur", &compositingFilter);
+		NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.0] forKey:@"inputRadius"];
+		CGSSetCIFilterValuesFromDictionary(thisConnection, compositingFilter, (CFDictionaryRef)options);
+		/* Now apply the filter to the window */
+		CGSAddWindowFilter(thisConnection, [self windowNumber], compositingFilter, compositingType);
+	});
 		
 	return self;
+}
+-(void)setBlur:(CGFloat)amount;
+{
+	if(!compositingFilter) return;
+	
+			NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:amount] forKey:@"inputRadius"];
+		CGSSetCIFilterValuesFromDictionary(thisConnection, compositingFilter, (CFDictionaryRef)options);
+
 }
 @end

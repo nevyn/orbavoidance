@@ -35,5 +35,23 @@
 	
 	[CATransaction commit];
 }
++(void)withAnimations:(void (^)())do_;
+{
+	[CATransaction begin];
+	[CATransaction setValue:(id)kCFBooleanFalse
+  	               forKey:kCATransactionDisableActions];
+	do_();
+	
+	[CATransaction commit];
+}
 
++(void)withAnimationSpeed:(NSTimeInterval)speed :(void (^)())do_;
+{
+	[CATransaction begin];
+	[CATransaction setValue:[NSNumber numberWithFloat:speed]
+  	               forKey:kCATransactionAnimationDuration];
+	do_();
+	
+	[CATransaction commit];
+}
 @end

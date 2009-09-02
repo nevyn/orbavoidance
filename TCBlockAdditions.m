@@ -19,3 +19,8 @@
 	return filtered;
 }
 @end
+
+void TCAfter(NSTimeInterval interval, dispatch_block_t do_)
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, interval*1000000000), dispatch_get_main_queue(), do_);
+}

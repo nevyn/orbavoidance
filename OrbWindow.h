@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "CGS.h"
 
 @interface OrbWindow : NSWindow {
-
+	CGSConnection thisConnection;
+	CGSWindowFilterRef compositingFilter;
 }
-
+-(void)setBlur:(CGFloat)amount;
 @end

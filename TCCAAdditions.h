@@ -17,4 +17,7 @@
 
 @interface CATransaction (DisableAnimations)
 +(void)withoutAnimations:(void (^)())do_;
++(void)withAnimations:(void (^)())do_;
+
++(void)withAnimationSpeed:(NSTimeInterval)speed :(void (^)())do_;
 @end
