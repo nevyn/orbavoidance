@@ -20,6 +20,10 @@
 		05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */; };
 		05FE5A21104DF48C00FE34B9 /* tspark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5A20104DF48C00FE34B9 /* tspark.png */; };
 		05FE5CE5104E06A700FE34B9 /* CGS.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5CE3104E06A700FE34B9 /* CGS.m */; };
+		05FE5EAE105061DB00FE34B9 /* Death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5EAC105061DB00FE34B9 /* Death.wav */; };
+		05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5EAD105061DB00FE34B9 /* Hit.wav */; };
+		05FE5ECC10506DFA00FE34B9 /* TCSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5ECB10506DFA00FE34B9 /* TCSound.m */; };
+		05FE5ECE10506F0600FE34B9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -52,6 +56,11 @@
 		05FE5A20104DF48C00FE34B9 /* tspark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tspark.png; path = ../Fireworks/tspark.png; sourceTree = SOURCE_ROOT; };
 		05FE5CE3104E06A700FE34B9 /* CGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGS.m; sourceTree = "<group>"; };
 		05FE5CE4104E06A700FE34B9 /* CGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGS.h; sourceTree = "<group>"; };
+		05FE5EAC105061DB00FE34B9 /* Death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Death.wav; sourceTree = "<group>"; };
+		05FE5EAD105061DB00FE34B9 /* Hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Hit.wav; sourceTree = "<group>"; };
+		05FE5ECA10506DFA00FE34B9 /* TCSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSound.h; sourceTree = "<group>"; };
+		05FE5ECB10506DFA00FE34B9 /* TCSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSound.m; sourceTree = "<group>"; };
+		05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				05FE56E9104DA06400FE34B9 /* Quartz.framework in Frameworks */,
+				05FE5ECE10506F0600FE34B9 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +150,8 @@
 				05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */,
 				05FE5CE3104E06A700FE34B9 /* CGS.m */,
 				05FE5CE4104E06A700FE34B9 /* CGS.h */,
+				05FE5ECA10506DFA00FE34B9 /* TCSound.h */,
+				05FE5ECB10506DFA00FE34B9 /* TCSound.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -147,6 +159,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05FE5EAC105061DB00FE34B9 /* Death.wav */,
+				05FE5EAD105061DB00FE34B9 /* Hit.wav */,
 				05FE5A20104DF48C00FE34B9 /* tspark.png */,
 				8D1107310486CEB800E47090 /* OrbAvoidance-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -160,6 +174,7 @@
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				05FE56E8104DA06400FE34B9 /* Quartz.framework */,
+				05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,6 +225,8 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				05FE5A21104DF48C00FE34B9 /* tspark.png in Resources */,
+				05FE5EAE105061DB00FE34B9 /* Death.wav in Resources */,
+				05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +250,7 @@
 				05FE57C2104DCDEC00FE34B9 /* TCCAAdditions.m in Sources */,
 				05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */,
 				05FE5CE5104E06A700FE34B9 /* CGS.m in Sources */,
+				05FE5ECC10506DFA00FE34B9 /* TCSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +288,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OrbAvoidance_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = OrbAvoidance;
@@ -286,6 +305,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OrbAvoidance_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = OrbAvoidance;

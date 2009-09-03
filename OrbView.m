@@ -9,6 +9,7 @@
 #import "OrbView.h"
 #import "TCBlockAdditions.h"
 #import "OrbWindow.h"
+#import "TCSound.h"
 
 #define ColRGBA(R, G, B, A) (CGColorRef)CFMakeCollectable(CGColorCreateGenericRGB(R, G, B, A))
 
@@ -51,7 +52,7 @@
 	explosionCell.spin = 2;
 	
 	ignition = [CAEmitterCell emitterCell];
-	ignition.lifetime = 0.1;
+	ignition.lifetime = 0.05;
 	ignition.birthRate = 1.0;
 	
 	ignition.redRange = 0.5;
@@ -90,6 +91,17 @@
 	[self.layer addSublayer:[Orb yellowOrb]];
 }
 
+-(void)playSound:(NSString*)name;
+{
+	NSSound *sound = [[TCSound soundNamed:name] retain];
+	sound.delegate = self;
+	[sound play];
+}
+-(void)sound:(NSSound*)sound_ didFinishPlaying:(BOOL)yes;
+{
+	[sound_ release];
+}
+
 -(void)levelUp;
 {
 	level++;
@@ -119,6 +131,8 @@
 
 -(void)gameover;
 {
+	[self playSound:@"Death.wav"];
+	
 	CAGradientLayer *grad = [CAGradientLayer layer];
 	CGFloat w = [NSScreen mainScreen].frame.size.width, h = [NSScreen mainScreen].frame.size.height;
 	grad.frame = CGRectMake(0.1*w, 0.9*h - 128, 0.8*w, 128);
@@ -155,10 +169,12 @@
 
 -(void)explodeAt:(CGPoint)p;
 {
+	[self playSound:@"Hit.wav"];
+	
 	CAEmitterLayer *explosion = [CAEmitterLayer layer];
 	
 	explosion.emitterPosition = p;
-	//explosion.renderMode = kCAEmitterLayerAdditive;
+	explosion.renderMode = kCAEmitterLayerAdditive;
 	explosion.emitterCells = [NSArray arrayWithObject:ignition];
 	
 	[self.layer addSublayer:explosion];	
@@ -185,7 +201,7 @@
 			
 			[orb update:dt];
 			
-			if(dist < orb.frame.size.width) {
+			if(dist < orb.frame.size.width/2.) {
 				[self gameover];
 				return;
 			}
@@ -197,7 +213,7 @@
 
 					Vector2 *cm = [square.positionVector vectorBySubtractingVector:orb.positionVector];
 					float cubedist = [cm length];
-					if(cubedist < square.frame.size.width) {
+					if(cubedist < square.frame.size.width/2.) {
 						self.score += MIN(self.multiplier, 10.);
 						self.multiplier += 1.;
 						[self explodeAt:orb.position];
@@ -212,7 +228,7 @@
 			
 			Vector2 *m = [mouse vectorBySubtractingVector:square.positionVector];
 			float dist = [m length];
-			if(dist < square.frame.size.width) {
+			if(dist < square.frame.size.width/2.) {
 				[self gameover];
 				return;
 			}

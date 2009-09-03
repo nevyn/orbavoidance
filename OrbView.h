@@ -12,7 +12,7 @@
 #import "TCCAAdditions.h"
 
 
-@interface OrbView : NSView {
+@interface OrbView : NSView <NSSoundDelegate> {
 	NSTimer *timer;
 	NSTimeInterval lastUpdate;
 	uint32_t level;
