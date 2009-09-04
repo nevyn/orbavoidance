@@ -463,10 +463,10 @@ static float kSuspenseMultiplier = 10.;
 	
 	[CATransaction withAnimationSpeed:2.0 :^ {
 		__block int i = 0;
-		highscoreNamesLayer.string  = [newScores foldInitialValue:@"" with:^(id soFar, id val) {
+		highscoreNamesLayer.string  = [newScores foldInitialValue:@"" with:^ id (id soFar, id val) {
 			return [soFar stringByAppendingFormat:@"%d %@\n", ++i, [val objectAtIndex:0]];
 		}];
-		highscoreScoresLayer.string = [newScores foldInitialValue:@"" with:^(id soFar, id val) {
+		highscoreScoresLayer.string = [newScores foldInitialValue:@"" with:^ id (id soFar, id val) {
 			return [soFar stringByAppendingFormat:@"%d\n", [[val objectAtIndex:1] intValue]];
 		}];
 	}];
