@@ -459,7 +459,6 @@ static float kSuspenseMultiplier = 10.;
 
 -(void)setHighscores:(NSArray *)newScores;
 {
-	NSLog(@"New highscores: %@", newScores);
 	highscores = newScores;
 	
 	[CATransaction withAnimationSpeed:2.0 :^ {
