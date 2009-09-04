@@ -14,4 +14,5 @@
 	CGSWindowFilterRef compositingFilter;
 }
 -(void)setBlur:(CGFloat)amount;
+-(BOOL)useBlur;
 @end

@@ -29,22 +29,23 @@
 	[self setBackgroundColor:[NSColor clearColor]];
 	[self setOpaque:NO];
 	
-	[self setBackgroundColor:[NSColor colorWithDeviceWhite:1.0 alpha:0.1]];
+	if([self useBlur])
+		[self setBackgroundColor:[NSColor colorWithDeviceWhite:1.0 alpha:0.1]];
 	
 	[self setCollectionBehavior:NSWindowCollectionBehaviorStationary];
 
-	
-	TCAfter(0.01, ^ {
-		NSInteger compositingType = 1 << 0; // Under the window
-		/* Make a new connection to CoreGraphics */
-		CGSNewConnection(NULL, &thisConnection);
-		/* Create a CoreImage filter and set it up */
-		CGSNewCIFilterByName(thisConnection, (CFStringRef)@"CIGaussianBlur", &compositingFilter);
-		NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.0] forKey:@"inputRadius"];
-		CGSSetCIFilterValuesFromDictionary(thisConnection, compositingFilter, (CFDictionaryRef)options);
-		/* Now apply the filter to the window */
-		CGSAddWindowFilter(thisConnection, [self windowNumber], compositingFilter, compositingType);
-	});
+	if([self useBlur])
+		TCAfter(0.01, ^ {
+			NSInteger compositingType = 1 << 0; // Under the window
+			/* Make a new connection to CoreGraphics */
+			CGSNewConnection(NULL, &thisConnection);
+			/* Create a CoreImage filter and set it up */
+			CGSNewCIFilterByName(thisConnection, (CFStringRef)@"CIGaussianBlur", &compositingFilter);
+			NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.0] forKey:@"inputRadius"];
+			CGSSetCIFilterValuesFromDictionary(thisConnection, compositingFilter, (CFDictionaryRef)options);
+			/* Now apply the filter to the window */
+			CGSAddWindowFilter(thisConnection, [self windowNumber], compositingFilter, compositingType);
+		});
 		
 	return self;
 }
@@ -55,5 +56,10 @@
 			NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:amount] forKey:@"inputRadius"];
 		CGSSetCIFilterValuesFromDictionary(thisConnection, compositingFilter, (CFDictionaryRef)options);
 
+}
+
+-(BOOL)useBlur;
+{
+	return NO;
 }
 @end

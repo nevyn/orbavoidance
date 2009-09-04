@@ -10,6 +10,7 @@
 #import <Quartz/Quartz.h>
 #import "Vector2.h"
 #import "TCCAAdditions.h"
+#import "TCSound.h"
 
 
 @interface OrbView : NSView <NSSoundDelegate> {
@@ -21,6 +22,16 @@
 	CAGradientLayer *multiplierIndicator;
 	
 	CAEmitterCell *ignition, *explosionCell;
+	
+	TCSound *suspense;
+	
+	// Format: [[name, score], [name score], ...] with at most 10 entries
+	NSArray *highscores;
+	
+	CALayer *fillLayer;
+	CAGradientLayer *highscoreLayer;
+	CATextLayer *highscoreNamesLayer;
+	CATextLayer *highscoreScoresLayer;
 }
 -(NSArray*)orbs;
 -(NSArray*)squares;
@@ -31,6 +42,7 @@
 -(void)levelUp;
 @property float score;
 @property float multiplier;
+@property (assign) NSArray *highscores;
 @end
 
 @interface Orb : CALayer {

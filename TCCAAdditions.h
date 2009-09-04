@@ -21,3 +21,5 @@
 
 +(void)withAnimationSpeed:(NSTimeInterval)speed :(void (^)())do_;
 @end
+
+CGRect TCOriginRect(CGRect rect);

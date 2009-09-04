@@ -18,6 +18,24 @@
 	}
 	return filtered;
 }
+-(NSArray*)map:(id(^)(id))mapper;
+{
+	NSMutableArray *res = [NSMutableArray arrayWithCapacity:[self count]];
+	for (id obj in self)
+		[res addObject:mapper(obj)];
+	return res;
+}
+
+-(id)foldInitialValue:(id)initial with:(TCArrayFolder)folder;
+{
+	id current = initial;
+	for(id element in self) {
+		id old = current;
+		current = folder(old, element);
+	}
+	return current;
+}
+
 @end
 
 void TCAfter(NSTimeInterval interval, dispatch_block_t do_)

@@ -50,8 +50,18 @@
 	[CATransaction begin];
 	[CATransaction setValue:[NSNumber numberWithFloat:speed]
   	               forKey:kCATransactionAnimationDuration];
+	[CATransaction setValue:(id)kCFBooleanFalse
+									 forKey:kCATransactionDisableActions];
+
 	do_();
 	
 	[CATransaction commit];
 }
 @end
+
+
+CGRect TCOriginRect(CGRect rect)
+{
+	rect.origin = CGPointMake(0, 0);
+	return rect;
+}

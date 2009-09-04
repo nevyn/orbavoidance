@@ -15,6 +15,8 @@
 @interface TCSound : NSObject {
 	id<NSObject, NSSoundDelegate> delegate;
 	SystemSoundID  mySSID;
+	BOOL loops;
+	BOOL isPlaying;
 }
 + (id)soundNamed:(NSString *)name;
 - (id)initWithContentsOfURL:(NSURL *)url byReference:(BOOL)byRef;
@@ -28,4 +30,5 @@
 
 
 @property (assign) id<NSObject, NSSoundDelegate> delegate;
+@property BOOL loops;
 @end

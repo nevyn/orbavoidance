@@ -13,12 +13,15 @@ static void MyCompletionCallback (
     TCSound *sound
 ) {
 	[sound stop];
-	[sound.delegate sound:(NSSound*)sound didFinishPlaying:YES];
+	if(sound.loops)
+		[sound play];
+	else
+		[sound.delegate sound:(NSSound*)sound didFinishPlaying:YES];
 }
 
 
 @implementation TCSound
-@synthesize delegate;
+@synthesize delegate, loops;
 + (id)soundNamed:(NSString *)name;
 {
 	NSURL *path = [[NSBundle mainBundle] URLForResource:name withExtension:nil];
@@ -62,10 +65,30 @@ static void MyCompletionCallback (
     );
 
 	AudioServicesPlaySystemSound (mySSID);
+	isPlaying = YES;
+	return YES;
 }
 - (BOOL)stop;
 {
 	CFRelease(self);
 	AudioServicesRemoveSystemSoundCompletion(mySSID);
+	isPlaying = NO;
+	return YES;
 }
+
+- (BOOL)pause;
+{
+	return NO;
+}
+- (BOOL)resume;
+{
+	return NO;
+}
+- (BOOL)isPlaying;
+{
+	return isPlaying;
+}
+
+
+
 @end

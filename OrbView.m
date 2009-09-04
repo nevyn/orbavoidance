@@ -9,9 +9,23 @@
 #import "OrbView.h"
 #import "TCBlockAdditions.h"
 #import "OrbWindow.h"
-#import "TCSound.h"
+#import "JSON.h"
+#import "CollectionUtils.h"
 
 #define ColRGBA(R, G, B, A) (CGColorRef)CFMakeCollectable(CGColorCreateGenericRGB(R, G, B, A))
+#define ColRGBA2(R, G, B, A) ((id)ColRGBA(R, G, B, A))
+
+static float frandom() {
+	return random()/(float)RAND_MAX;
+}
+
+static float kSuspenseMultiplier = 10.;
+
+@interface OrbView ()
+-(void)updateHighscores;
+-(void)blinkToColor:(CGColorRef)col;
+-(void)cycleHighscoreColors;
+@end
 
 @implementation OrbView
 
@@ -25,14 +39,76 @@
 	
 	self.wantsLayer = YES;
 	
+	// For when things heat up
+	fillLayer = [CALayer layer];
+	fillLayer.frame = TCOriginRect(self.layer.frame);
+	[self.layer addSublayer:fillLayer];
+	fillLayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
+	fillLayer.backgroundColor = ColRGBA(0, 0, 0, 0);
+	
+	suspense = [TCSound soundNamed:@"Suspense.wav"];
+	suspense.loops = YES;
+	
+	
+	// Start a new level
+	
 	[self clear];	
 	[self levelUp];
 	
+	// Heartbeat timer
 	timer = [NSTimer scheduledTimerWithTimeInterval:1./60. target:self selector:@selector(update) userInfo:nil repeats:YES];
-	
 	lastUpdate = [NSDate timeIntervalSinceReferenceDate];
 	
 	
+	// Online highscores are shown on the right side of the screen
+	highscoreLayer = [CAGradientLayer layer];
+	
+	CGFloat w = [NSScreen mainScreen].frame.size.width, h = [NSScreen mainScreen].frame.size.height;
+	highscoreLayer.frame = CGRectMake(0.6*w, 0.1*h, 0.35*w, 0.8*h);
+
+	highscoreLayer.startPoint = CGPointMake(0, 1);
+	highscoreLayer.endPoint = CGPointMake(0, 0);
+	[self cycleHighscoreColors];
+	
+	
+	CALayer *highscoreTextParent = [CALayer layer];
+	highscoreTextParent.frame = TCOriginRect(highscoreLayer.frame);
+	
+	highscoreNamesLayer = [CATextLayer layer];
+	highscoreNamesLayer.fontSize = 20;
+	highscoreNamesLayer.string = [NSString stringWithFormat:@""];
+	highscoreNamesLayer.frame = CGRectMake(0, 0, highscoreLayer.frame.size.width/2, highscoreLayer.frame.size.height);
+	highscoreNamesLayer.shadowOpacity = 1.0;
+	highscoreNamesLayer.shadowRadius = 4.0;
+	highscoreNamesLayer.shadowOffset = CGSizeMake(4, -4);
+	highscoreNamesLayer.alignmentMode = kCAAlignmentRight;
+	
+	highscoreScoresLayer = [CATextLayer layer];
+	highscoreScoresLayer.fontSize = 20;
+	highscoreScoresLayer.string = [NSString stringWithFormat:@""];
+	highscoreScoresLayer.frame = CGRectMake(highscoreLayer.frame.size.width/2 + 20, 0, highscoreLayer.frame.size.width/2 - 20, highscoreLayer.frame.size.height);
+	highscoreScoresLayer.shadowOpacity = 1.0;
+	highscoreScoresLayer.shadowRadius = 4.0;
+	highscoreScoresLayer.shadowOffset = CGSizeMake(4, -4);
+	
+	
+	[highscoreTextParent addSublayer:highscoreNamesLayer];
+	[highscoreTextParent addSublayer:highscoreScoresLayer];
+
+	highscoreLayer.mask = highscoreTextParent;
+
+	[self.layer addSublayer:highscoreLayer];
+	
+		// Fetch scores from the 'net
+	self.highscores = [NSArray array];
+	[self updateHighscores];
+	
+		// And do it every 30s
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateHighscores) userInfo:nil repeats:YES];
+
+
+	
+	// Prepare the explosion sprites
 	
 	const char* fileName = [[[NSBundle mainBundle] pathForResource:@"tspark" ofType:@"png"] UTF8String];
 	CGDataProviderRef dataProvider = (CGDataProviderRef)CFMakeCollectable(CGDataProviderCreateWithFilename(fileName));
@@ -44,7 +120,6 @@
 	explosionCell.velocity = 130;
 	explosionCell.lifetime = 2;
 	explosionCell.alphaSpeed = -0.2;
-	//explosionCell.yAcceleration = -80;
 	explosionCell.beginTime = 0;
 	explosionCell.duration = 0.1;
 	explosionCell.emissionRange = 2 * M_PI;
@@ -66,14 +141,38 @@
 	
 	multiplierIndicator = [CAGradientLayer layer];
 	multiplierIndicator.frame = CGRectMake(0, 0, 128, [NSScreen mainScreen].frame.size.height);
-	multiplierIndicator.colors = [NSArray arrayWithObjects:(id)ColRGBA(0, 1, 0, .5), ColRGBA(0, 1, 0, .5), ColRGBA(0, 0, 0, 0), ColRGBA(0, 0, 0, 0), nil];
+	multiplierIndicator.colors = $array(ColRGBA2(0, 1, 0, .5), ColRGBA2(0, 1, 0, .5), ColRGBA2(0, 0, 0, 0), ColRGBA2(0, 0, 0, 0));
 	multiplierIndicator.startPoint = CGPointMake(0, 0);
 	multiplierIndicator.endPoint = CGPointMake(0, 1);
-	multiplierIndicator.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:1], nil];
+	multiplierIndicator.locations = $array([NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:1]);
 	
 	[self.layer addSublayer:multiplierIndicator];
 	
+	// If we want a sonar-style ping sound, enable this:
+	//[NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(proximitySound) userInfo:nil repeats:NO];
+	
+	
+
+	
 	return self;
+}
+-(void)cycleHighscoreColors;
+{
+	[CATransaction withAnimationSpeed:2.0 :^ {
+		float alpha = 0.6;
+		NSArray *newCols = $array(ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
+															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
+															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
+															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha));
+		
+		[CATransaction setCompletionBlock:^ {
+			[self cycleHighscoreColors];
+		}];
+						
+		highscoreLayer.colors = newCols;
+
+
+	}];
 }
 
 -(void)clear;
@@ -93,19 +192,36 @@
 
 -(void)playSound:(NSString*)name;
 {
-	NSSound *sound = [[TCSound soundNamed:name] retain];
-	sound.delegate = self;
+	NSSound *sound = [TCSound soundNamed:name];
 	[sound play];
 }
--(void)sound:(NSSound*)sound_ didFinishPlaying:(BOOL)yes;
+
+-(void)proximitySound;
 {
-	[sound_ release];
+	[self playSound:@"Proximity.wav"];
+	
+	Vector2 *mouse = [Vector2 vectorWithCGPoint:NSPointToCGPoint([NSEvent mouseLocation])];
+	
+	float minDistance = 1000;
+	for(Orb *orb in self.orbs) {
+		Vector2 *diff = [mouse vectorBySubtractingVector:orb.positionVector];
+		minDistance = MIN([diff length], minDistance);
+	}
+	
+	for(Square *square in self.squares) {
+		Vector2 *diff = [mouse vectorBySubtractingVector:square.positionVector];
+		minDistance = MIN([diff length], minDistance);
+	}
+	
+	[NSTimer scheduledTimerWithTimeInterval:minDistance/1000. target:self selector:@selector(proximitySound) userInfo:nil repeats:NO];
 }
 
 -(void)levelUp;
 {
-	if(level != 0)
+	if(level != 0) {
 		[self playSound:@"Levelup.wav"];
+		[self blinkToColor:ColRGBA(0.5, 0.5, 1, 0.3)];
+	}
 	
 	level++;
 		
@@ -116,6 +232,54 @@
 	}
 	if(level == 1 || level % 6 == 0)
 		[self.layer addSublayer:[Square square]];
+}
+
+-(void)updateHighscores;
+{
+	dispatch_async(dispatch_get_global_queue(0, 0), ^ {
+		NSError *error = nil;
+		NSURL *url = [NSURL URLWithString:@"http://nevyn.nu/orbAvoidance/highscores.php?get"];
+		NSString *highscoreString = [NSString stringWithContentsOfURL:url
+																												 encoding:NSUTF8StringEncoding
+																														error:&error];
+		if(!highscoreString) {
+			NSLog(@"Failed fetching highscores: %@", [error localizedDescription]);
+			return;
+		}
+		
+		NSArray *newScores = [[SBJsonParser new] objectWithString:highscoreString];
+		
+		if(!newScores) {
+			NSLog(@"Failed to parse highscores: %@", highscoreString);
+			return;
+		}
+		
+		dispatch_async(dispatch_get_main_queue(), ^ {
+			self.highscores = newScores;
+		
+		});
+	});
+}
+
+-(void)submitScore:(float)newScore;
+{
+	if(newScore < 10) return;
+	
+	dispatch_async(dispatch_get_global_queue(0, 0), ^ {
+		NSError *error = nil;
+		// Yes, I realize there is no security here whatsoever. Please don't ruin the party.
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://nevyn.nu/orbAvoidance/highscores.php?set&user=%@&score=%f", NSUserName(), newScore]];
+		NSString *result = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+		if(!result) {
+			NSLog(@"Failed uploading highscores: %@", [error localizedDescription]);
+			return;
+		}
+		
+		dispatch_async(dispatch_get_main_queue(), ^ {
+			if(self.highscores.count > 0 && newScore > [[[self.highscores lastObject] objectAtIndex:1] floatValue])
+				[self updateHighscores];
+		});
+	});
 }
 
 -(NSArray*)orbs;
@@ -135,17 +299,18 @@
 -(void)gameover;
 {
 	[self playSound:@"Death.wav"];
+	[self blinkToColor:ColRGBA(1, 0, 0, 0.3)];
 	
 	CAGradientLayer *grad = [CAGradientLayer layer];
 	CGFloat w = [NSScreen mainScreen].frame.size.width, h = [NSScreen mainScreen].frame.size.height;
 	grad.frame = CGRectMake(0.1*w, 0.9*h - 128, 0.8*w, 128);
-	grad.colors = [NSArray arrayWithObjects:(id)ColRGBA(1, 0, 0, 1), ColRGBA(0, 1, 0, 1), ColRGBA(0, 0, 1, 1), ColRGBA(0, 0, 0, 0), nil];
+	grad.colors = $array(ColRGBA2(1, 0, 0, 1), ColRGBA2(0, 1, 0, 1), ColRGBA2(0, 0, 1, 1), ColRGBA2(0, 0, 0, 0));
 	grad.startPoint = CGPointMake(0, 0);
 	grad.endPoint = CGPointMake(1, 0);
-	grad.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], nil];
+	grad.locations = $array([NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0]);
 	TCAfter(0.01, ^ {
 		[CATransaction withAnimationSpeed:4.0 : ^ {
-			grad.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0.4], [NSNumber numberWithFloat:0.8], [NSNumber numberWithFloat:1], nil];
+			grad.locations = $array([NSNumber numberWithFloat:0], [NSNumber numberWithFloat:0.4], [NSNumber numberWithFloat:0.8], [NSNumber numberWithFloat:1]);
 			
 		}];
 	});
@@ -166,6 +331,8 @@
 		[grad removeFromSuperlayer];
 	});
 	
+	[self submitScore:score];
+	
 	[self clear];	
 	[self levelUp];
 }
@@ -184,6 +351,16 @@
 	TCAfter(0.8, ^ {
 		[explosion removeFromSuperlayer];
 	});
+}
+
+-(void)blinkToColor:(CGColorRef)col;
+{
+	CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+	anim.fromValue = (id)col;
+	anim.toValue = (id)fillLayer.backgroundColor;
+	anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	anim.duration = 1.0;
+	[fillLayer addAnimation:anim forKey:@"blink"];
 }
 
 
@@ -217,7 +394,7 @@
 					Vector2 *cm = [square.positionVector vectorBySubtractingVector:orb.positionVector];
 					float cubedist = [cm length];
 					if(cubedist < square.frame.size.width/2.) {
-						self.score += MIN(self.multiplier, 10.);
+						self.score += MIN(self.multiplier, kSuspenseMultiplier);
 						self.multiplier += 1.;
 						[self explodeAt:orb.position];
 						[orb removeFromSuperlayer];
@@ -242,12 +419,17 @@
 		
 		self.multiplier = MAX(1, self.multiplier-dt);
 		
+		if( self.multiplier >= kSuspenseMultiplier && !suspense.isPlaying ) {
+			[suspense play];
+		} else if(self.multiplier < kSuspenseMultiplier && suspense.isPlaying ) {
+			[suspense stop];
+		}
 		
 		
 	}];
 }
 
-@synthesize score, multiplier;
+@synthesize score, multiplier, highscores;
 -(void)setMultiplier:(float)newMultiplier;
 {
 	static float lastBlur = 0;
@@ -256,15 +438,39 @@
 	multiplier = newMultiplier;
 	
 	if(diff > 0.5) {
-		[((OrbWindow*)self.window) setBlur:newMultiplier-1.];
+		if([((OrbWindow*)self.window) useBlur])
+			[((OrbWindow*)self.window) setBlur:newMultiplier-1.];
 		lastBlur = newMultiplier;
 	}
 	
-	CGFloat frac = (newMultiplier - 1.)/9.;
+	CGFloat frac = (newMultiplier - 1.)/(kSuspenseMultiplier-1.);
 	[CATransaction withAnimations:^ {
-		multiplierIndicator.locations = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0], [NSNumber numberWithFloat:frac], [NSNumber numberWithFloat:frac+0.1], [NSNumber numberWithFloat:1], nil];
+		multiplierIndicator.locations = $array([NSNumber numberWithFloat:0], [NSNumber numberWithFloat:frac], [NSNumber numberWithFloat:frac+0.1], [NSNumber numberWithFloat:1]);
+		
+		[CATransaction withAnimationSpeed:1.0 :^ {
+			if(newMultiplier > kSuspenseMultiplier)
+				fillLayer.backgroundColor = ColRGBA(1, 1, 0, 0.2);
+			else
+				fillLayer.backgroundColor = ColRGBA(0, 0, 0, 0);
+		}];
+			
 	}];
+}
 
+-(void)setHighscores:(NSArray *)newScores;
+{
+	NSLog(@"New highscores: %@", newScores);
+	highscores = newScores;
+	
+	[CATransaction withAnimationSpeed:2.0 :^ {
+		__block int i = 0;
+		highscoreNamesLayer.string  = [newScores foldInitialValue:@"" with:^(id soFar, id val) {
+			return [soFar stringByAppendingFormat:@"%d %@\n", ++i, [val objectAtIndex:0]];
+		}];
+		highscoreScoresLayer.string = [newScores foldInitialValue:@"" with:^(id soFar, id val) {
+			return [soFar stringByAppendingFormat:@"%d\n", [[val objectAtIndex:1] intValue]];
+		}];
+	}];
 }
 @end
 
@@ -364,7 +570,7 @@
 	CABasicAnimation *rotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 	rotation.fromValue = [NSNumber numberWithFloat:M_PI];
 	
-	agroup.animations = [NSArray arrayWithObjects:scale, opacity, rotation, nil];
+	agroup.animations = $array(scale, opacity, rotation);
 	agroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 	agroup.duration = 2.0;
 	

@@ -18,13 +18,25 @@
 		05FE571E104DA53B00FE34B9 /* Vector4.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5718104DA53B00FE34B9 /* Vector4.m */; };
 		05FE57C2104DCDEC00FE34B9 /* TCCAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE57C1104DCDEC00FE34B9 /* TCCAAdditions.m */; };
 		05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */; };
-		05FE5A21104DF48C00FE34B9 /* tspark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5A20104DF48C00FE34B9 /* tspark.png */; };
 		05FE5CE5104E06A700FE34B9 /* CGS.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5CE3104E06A700FE34B9 /* CGS.m */; };
 		05FE5EAE105061DB00FE34B9 /* Death.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5EAC105061DB00FE34B9 /* Death.wav */; };
 		05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5EAD105061DB00FE34B9 /* Hit.wav */; };
 		05FE5ECC10506DFA00FE34B9 /* TCSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5ECB10506DFA00FE34B9 /* TCSound.m */; };
 		05FE5ECE10506F0600FE34B9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */; };
 		05FE5F7D10510F5900FE34B9 /* Levelup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5F7C10510F5900FE34B9 /* Levelup.wav */; };
+		05FE5FAF10513B2600FE34B9 /* Proximity.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5FAE10513B2600FE34B9 /* Proximity.wav */; };
+		05FE5FFD105144B800FE34B9 /* Suspense.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5FFC105144B800FE34B9 /* Suspense.wav */; };
+		05FE60A2105159C200FE34B9 /* tspark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05FE60A1105159C200FE34B9 /* tspark.png */; };
+		05FE60D4105165C100FE34B9 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60CD105165C100FE34B9 /* CollectionUtils.m */; };
+		05FE60D5105165C100FE34B9 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60CF105165C100FE34B9 /* ExceptionUtils.m */; };
+		05FE60D6105165C100FE34B9 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60D1105165C100FE34B9 /* Logging.m */; };
+		05FE60D7105165C100FE34B9 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60D3105165C100FE34B9 /* Test.m */; };
+		05FE60E6105165D900FE34B9 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60DB105165D900FE34B9 /* NSObject+SBJSON.m */; };
+		05FE60E7105165D900FE34B9 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60DD105165D900FE34B9 /* NSString+SBJSON.m */; };
+		05FE60E8105165D900FE34B9 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60DF105165D900FE34B9 /* SBJSON.m */; };
+		05FE60E9105165D900FE34B9 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60E1105165D900FE34B9 /* SBJsonBase.m */; };
+		05FE60EA105165D900FE34B9 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60E3105165D900FE34B9 /* SBJsonParser.m */; };
+		05FE60EB105165D900FE34B9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60E5105165D900FE34B9 /* SBJsonWriter.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -54,7 +66,6 @@
 		05FE57C1104DCDEC00FE34B9 /* TCCAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCAAdditions.m; sourceTree = "<group>"; };
 		05FE58AF104DDD6F00FE34B9 /* TCBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBlockAdditions.h; sourceTree = "<group>"; };
 		05FE58B0104DDD6F00FE34B9 /* TCBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBlockAdditions.m; sourceTree = "<group>"; };
-		05FE5A20104DF48C00FE34B9 /* tspark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tspark.png; path = ../Fireworks/tspark.png; sourceTree = SOURCE_ROOT; };
 		05FE5CE3104E06A700FE34B9 /* CGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGS.m; sourceTree = "<group>"; };
 		05FE5CE4104E06A700FE34B9 /* CGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGS.h; sourceTree = "<group>"; };
 		05FE5EAC105061DB00FE34B9 /* Death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Death.wav; sourceTree = "<group>"; };
@@ -63,6 +74,30 @@
 		05FE5ECB10506DFA00FE34B9 /* TCSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSound.m; sourceTree = "<group>"; };
 		05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		05FE5F7C10510F5900FE34B9 /* Levelup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Levelup.wav; sourceTree = "<group>"; };
+		05FE5FAE10513B2600FE34B9 /* Proximity.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Proximity.wav; sourceTree = "<group>"; };
+		05FE5FFC105144B800FE34B9 /* Suspense.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Suspense.wav; sourceTree = "<group>"; };
+		05FE60A1105159C200FE34B9 /* tspark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tspark.png; sourceTree = "<group>"; };
+		05FE60CC105165C100FE34B9 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
+		05FE60CD105165C100FE34B9 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
+		05FE60CE105165C100FE34B9 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionUtils.h; sourceTree = "<group>"; };
+		05FE60CF105165C100FE34B9 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionUtils.m; sourceTree = "<group>"; };
+		05FE60D0105165C100FE34B9 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		05FE60D1105165C100FE34B9 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
+		05FE60D2105165C100FE34B9 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		05FE60D3105165C100FE34B9 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		05FE60D9105165D900FE34B9 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		05FE60DA105165D900FE34B9 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		05FE60DB105165D900FE34B9 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		05FE60DC105165D900FE34B9 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		05FE60DD105165D900FE34B9 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		05FE60DE105165D900FE34B9 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		05FE60DF105165D900FE34B9 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		05FE60E0105165D900FE34B9 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		05FE60E1105165D900FE34B9 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		05FE60E2105165D900FE34B9 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		05FE60E3105165D900FE34B9 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		05FE60E4105165D900FE34B9 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		05FE60E5105165D900FE34B9 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -105,6 +140,41 @@
 				05FE5718104DA53B00FE34B9 /* Vector4.m */,
 			);
 			path = Math;
+			sourceTree = "<group>";
+		};
+		05FE60CB105165C100FE34B9 /* JAUtil */ = {
+			isa = PBXGroup;
+			children = (
+				05FE60CC105165C100FE34B9 /* CollectionUtils.h */,
+				05FE60CD105165C100FE34B9 /* CollectionUtils.m */,
+				05FE60CE105165C100FE34B9 /* ExceptionUtils.h */,
+				05FE60CF105165C100FE34B9 /* ExceptionUtils.m */,
+				05FE60D0105165C100FE34B9 /* Logging.h */,
+				05FE60D1105165C100FE34B9 /* Logging.m */,
+				05FE60D2105165C100FE34B9 /* Test.h */,
+				05FE60D3105165C100FE34B9 /* Test.m */,
+			);
+			path = JAUtil;
+			sourceTree = "<group>";
+		};
+		05FE60D8105165D900FE34B9 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				05FE60D9105165D900FE34B9 /* JSON.h */,
+				05FE60DA105165D900FE34B9 /* NSObject+SBJSON.h */,
+				05FE60DB105165D900FE34B9 /* NSObject+SBJSON.m */,
+				05FE60DC105165D900FE34B9 /* NSString+SBJSON.h */,
+				05FE60DD105165D900FE34B9 /* NSString+SBJSON.m */,
+				05FE60DE105165D900FE34B9 /* SBJSON.h */,
+				05FE60DF105165D900FE34B9 /* SBJSON.m */,
+				05FE60E0105165D900FE34B9 /* SBJsonBase.h */,
+				05FE60E1105165D900FE34B9 /* SBJsonBase.m */,
+				05FE60E2105165D900FE34B9 /* SBJsonParser.h */,
+				05FE60E3105165D900FE34B9 /* SBJsonParser.m */,
+				05FE60E4105165D900FE34B9 /* SBJsonWriter.h */,
+				05FE60E5105165D900FE34B9 /* SBJsonWriter.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
@@ -154,6 +224,8 @@
 				05FE5CE4104E06A700FE34B9 /* CGS.h */,
 				05FE5ECA10506DFA00FE34B9 /* TCSound.h */,
 				05FE5ECB10506DFA00FE34B9 /* TCSound.m */,
+				05FE60CB105165C100FE34B9 /* JAUtil */,
+				05FE60D8105165D900FE34B9 /* JSON */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -161,10 +233,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05FE60A1105159C200FE34B9 /* tspark.png */,
 				05FE5F7C10510F5900FE34B9 /* Levelup.wav */,
 				05FE5EAC105061DB00FE34B9 /* Death.wav */,
 				05FE5EAD105061DB00FE34B9 /* Hit.wav */,
-				05FE5A20104DF48C00FE34B9 /* tspark.png */,
+				05FE5FAE10513B2600FE34B9 /* Proximity.wav */,
+				05FE5FFC105144B800FE34B9 /* Suspense.wav */,
 				8D1107310486CEB800E47090 /* OrbAvoidance-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -227,10 +301,12 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				05FE5A21104DF48C00FE34B9 /* tspark.png in Resources */,
 				05FE5EAE105061DB00FE34B9 /* Death.wav in Resources */,
 				05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */,
 				05FE5F7D10510F5900FE34B9 /* Levelup.wav in Resources */,
+				05FE5FAF10513B2600FE34B9 /* Proximity.wav in Resources */,
+				05FE5FFD105144B800FE34B9 /* Suspense.wav in Resources */,
+				05FE60A2105159C200FE34B9 /* tspark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +331,16 @@
 				05FE58B1104DDD6F00FE34B9 /* TCBlockAdditions.m in Sources */,
 				05FE5CE5104E06A700FE34B9 /* CGS.m in Sources */,
 				05FE5ECC10506DFA00FE34B9 /* TCSound.m in Sources */,
+				05FE60D4105165C100FE34B9 /* CollectionUtils.m in Sources */,
+				05FE60D5105165C100FE34B9 /* ExceptionUtils.m in Sources */,
+				05FE60D6105165C100FE34B9 /* Logging.m in Sources */,
+				05FE60D7105165C100FE34B9 /* Test.m in Sources */,
+				05FE60E6105165D900FE34B9 /* NSObject+SBJSON.m in Sources */,
+				05FE60E7105165D900FE34B9 /* NSString+SBJSON.m in Sources */,
+				05FE60E8105165D900FE34B9 /* SBJSON.m in Sources */,
+				05FE60E9105165D900FE34B9 /* SBJsonBase.m in Sources */,
+				05FE60EA105165D900FE34B9 /* SBJsonParser.m in Sources */,
+				05FE60EB105165D900FE34B9 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
