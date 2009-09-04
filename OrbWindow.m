@@ -30,6 +30,8 @@
 	[self setOpaque:NO];
 	
 	[self setBackgroundColor:[NSColor colorWithDeviceWhite:1.0 alpha:0.1]];
+	
+	[self setCollectionBehavior:NSWindowCollectionBehaviorStationary];
 
 	
 	TCAfter(0.01, ^ {

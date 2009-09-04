@@ -104,6 +104,9 @@
 
 -(void)levelUp;
 {
+	if(level != 0)
+		[self playSound:@"Levelup.wav"];
+	
 	level++;
 		
 	for(int i = 0; i < level; i++) {

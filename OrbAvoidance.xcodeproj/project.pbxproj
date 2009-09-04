@@ -24,6 +24,7 @@
 		05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5EAD105061DB00FE34B9 /* Hit.wav */; };
 		05FE5ECC10506DFA00FE34B9 /* TCSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE5ECB10506DFA00FE34B9 /* TCSound.m */; };
 		05FE5ECE10506F0600FE34B9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */; };
+		05FE5F7D10510F5900FE34B9 /* Levelup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05FE5F7C10510F5900FE34B9 /* Levelup.wav */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -61,6 +62,7 @@
 		05FE5ECA10506DFA00FE34B9 /* TCSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSound.h; sourceTree = "<group>"; };
 		05FE5ECB10506DFA00FE34B9 /* TCSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSound.m; sourceTree = "<group>"; };
 		05FE5ECD10506F0600FE34B9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		05FE5F7C10510F5900FE34B9 /* Levelup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Levelup.wav; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05FE5F7C10510F5900FE34B9 /* Levelup.wav */,
 				05FE5EAC105061DB00FE34B9 /* Death.wav */,
 				05FE5EAD105061DB00FE34B9 /* Hit.wav */,
 				05FE5A20104DF48C00FE34B9 /* tspark.png */,
@@ -227,6 +230,7 @@
 				05FE5A21104DF48C00FE34B9 /* tspark.png in Resources */,
 				05FE5EAE105061DB00FE34B9 /* Death.wav in Resources */,
 				05FE5EAF105061DB00FE34B9 /* Hit.wav in Resources */,
+				05FE5F7D10510F5900FE34B9 /* Levelup.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
