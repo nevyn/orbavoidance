@@ -11,6 +11,7 @@
 #import "OrbWindow.h"
 #import "JSON.h"
 #import "CollectionUtils.h"
+#import "NSAttributedString+TCImmutableAdditions.h"
 
 #define ColRGBA(R, G, B, A) (CGColorRef)CFMakeCollectable(CGColorCreateGenericRGB(R, G, B, A))
 #define ColRGBA2(R, G, B, A) ((id)ColRGBA(R, G, B, A))
@@ -463,15 +464,25 @@ static float kSuspenseMultiplier = 10.;
 	
 	[CATransaction withAnimationSpeed:2.0 :^ {
 		__block int i = 0;
-		highscoreNamesLayer.string  = [newScores foldInitialValue:@"" with:^ id (id soFar, id val) {
-			return [soFar stringByAppendingFormat:@"%d %@\n", ++i, [val objectAtIndex:0]];
+		highscoreNamesLayer.string  = [newScores foldInitialValue:[NSAttributedString attributedString] with:^ id (id soFar, id val) {
+			NSFont *font = [NSFont systemFontOfSize:30-i];
+			NSAttributedString *row = [NSAttributedString attributedStringWithFont:font forFormat:@"%d %@\n", ++i, [val objectAtIndex:0]];
+			return [soFar attributedStringByAppending:row];
 		}];
-		highscoreScoresLayer.string = [newScores foldInitialValue:@"" with:^ id (id soFar, id val) {
-			return [soFar stringByAppendingFormat:@"%d\n", [[val objectAtIndex:1] intValue]];
+		i = 0;
+		highscoreScoresLayer.string = [newScores foldInitialValue:[NSAttributedString attributedString] with:^ id (id soFar, id val) {
+			NSFont *font = [NSFont systemFontOfSize:30-(i++)];
+			NSAttributedString *row = [NSAttributedString attributedStringWithFont:font forFormat:@"%.0f\n", [[val objectAtIndex:1] floatValue]];
+			return [soFar attributedStringByAppending:row];
 		}];
 	}];
 }
 @end
+
+
+
+
+
 
 
 

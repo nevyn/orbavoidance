@@ -38,6 +38,7 @@
 		05FE60EA105165D900FE34B9 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60E3105165D900FE34B9 /* SBJsonParser.m */; };
 		05FE60EB105165D900FE34B9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE60E5105165D900FE34B9 /* SBJsonWriter.m */; };
 		05FE62E81051956800FE34B9 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05FE62E71051956800FE34B9 /* icon.icns */; };
+		05FE63A31052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FE63A21052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* OrbAvoidanceAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -100,6 +101,8 @@
 		05FE60E4105165D900FE34B9 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		05FE60E5105165D900FE34B9 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		05FE62E71051956800FE34B9 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		05FE63A11052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+TCImmutableAdditions.h"; sourceTree = "<group>"; };
+		05FE63A21052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+TCImmutableAdditions.m"; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -108,7 +111,7 @@
 		256AC3F00F4B6AF500CF3369 /* OrbAvoidance_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrbAvoidance_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OrbAvoidance-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OrbAvoidance-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* OrbAvoidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrbAvoidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* orbAvoidance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = orbAvoidance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +199,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* OrbAvoidance.app */,
+				8D1107320486CEB800E47090 /* orbAvoidance.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,6 +231,8 @@
 				05FE5ECB10506DFA00FE34B9 /* TCSound.m */,
 				05FE60CB105165C100FE34B9 /* JAUtil */,
 				05FE60D8105165D900FE34B9 /* JSON */,
+				05FE63A11052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.h */,
+				05FE63A21052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -277,7 +282,7 @@
 			name = OrbAvoidance;
 			productInstallPath = "$(HOME)/Applications";
 			productName = OrbAvoidance;
-			productReference = 8D1107320486CEB800E47090 /* OrbAvoidance.app */;
+			productReference = 8D1107320486CEB800E47090 /* orbAvoidance.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -345,6 +350,7 @@
 				05FE60E9105165D900FE34B9 /* SBJsonBase.m in Sources */,
 				05FE60EA105165D900FE34B9 /* SBJsonParser.m in Sources */,
 				05FE60EB105165D900FE34B9 /* SBJsonWriter.m in Sources */,
+				05FE63A31052FDDC00FE34B9 /* NSAttributedString+TCImmutableAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +391,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = OrbAvoidance;
+				PRODUCT_NAME = orbAvoidance;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Debug;
@@ -402,7 +408,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OrbAvoidance-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = OrbAvoidance;
+				PRODUCT_NAME = orbAvoidance;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Release;
