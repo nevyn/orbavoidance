@@ -79,18 +79,19 @@ static float kSuspenseMultiplier = 10.;
 	highscoreNamesLayer.fontSize = 20;
 	highscoreNamesLayer.string = [NSString stringWithFormat:@""];
 	highscoreNamesLayer.frame = CGRectMake(0, 0, highscoreLayer.frame.size.width/2, highscoreLayer.frame.size.height);
-	highscoreNamesLayer.shadowOpacity = 1.0;
-	highscoreNamesLayer.shadowRadius = 4.0;
-	highscoreNamesLayer.shadowOffset = CGSizeMake(4, -4);
+	/*highscoreNamesLayer.shadowOpacity = 1.0;
+	highscoreNamesLayer.shadowColor = ColRGBA(1, 1, 1, 1);
+	highscoreNamesLayer.shadowRadius = 1.0;
+	highscoreNamesLayer.shadowOffset = CGSizeMake(0, -1);*/
 	highscoreNamesLayer.alignmentMode = kCAAlignmentRight;
 	
 	highscoreScoresLayer = [CATextLayer layer];
-	highscoreScoresLayer.fontSize = 20;
+	highscoreScoresLayer.fontSize = highscoreNamesLayer.fontSize;
 	highscoreScoresLayer.string = [NSString stringWithFormat:@""];
 	highscoreScoresLayer.frame = CGRectMake(highscoreLayer.frame.size.width/2 + 20, 0, highscoreLayer.frame.size.width/2 - 20, highscoreLayer.frame.size.height);
-	highscoreScoresLayer.shadowOpacity = 1.0;
-	highscoreScoresLayer.shadowRadius = 4.0;
-	highscoreScoresLayer.shadowOffset = CGSizeMake(4, -4);
+	highscoreScoresLayer.shadowOpacity = highscoreNamesLayer.shadowOpacity;
+	highscoreScoresLayer.shadowRadius = highscoreNamesLayer.shadowRadius;
+	highscoreScoresLayer.shadowOffset = highscoreNamesLayer.shadowOffset;
 	
 	
 	[highscoreTextParent addSublayer:highscoreNamesLayer];
@@ -161,10 +162,10 @@ static float kSuspenseMultiplier = 10.;
 {
 	[CATransaction withAnimationSpeed:2.0 :^ {
 		float alpha = 0.6;
-		NSArray *newCols = $array(ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
-															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
-															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha),
-															ColRGBA2(frandom()/2., frandom()/2., frandom()/2., alpha));
+		NSArray *newCols = $array(ColRGBA2(frandom()*0.7, frandom()*0.7, frandom()*0.7, alpha),
+															ColRGBA2(frandom()*0.7, frandom()*0.7, frandom()*0.7, alpha),
+															ColRGBA2(frandom()*0.7, frandom()*0.7, frandom()*0.7, alpha),
+															ColRGBA2(frandom()*0.7, frandom()*0.7, frandom()*0.7, alpha));
 		
 		[CATransaction setCompletionBlock:^ {
 			[self cycleHighscoreColors];
@@ -465,13 +466,15 @@ static float kSuspenseMultiplier = 10.;
 	[CATransaction withAnimationSpeed:2.0 :^ {
 		__block int i = 0;
 		highscoreNamesLayer.string  = [newScores foldInitialValue:[NSAttributedString attributedString] with:^ id (id soFar, id val) {
-			NSFont *font = [NSFont systemFontOfSize:30-i];
-			NSAttributedString *row = [NSAttributedString attributedStringWithFont:font forFormat:@"%d %@\n", ++i, [val objectAtIndex:0]];
+			NSFont *font = [NSFont systemFontOfSize:30-(i++)];
+			if(i == 1) font = [NSFont systemFontOfSize:40];
+			NSAttributedString *row = [NSAttributedString attributedStringWithFont:font forFormat:@"%@\n",[val objectAtIndex:0]];
 			return [soFar attributedStringByAppending:row];
 		}];
 		i = 0;
 		highscoreScoresLayer.string = [newScores foldInitialValue:[NSAttributedString attributedString] with:^ id (id soFar, id val) {
 			NSFont *font = [NSFont systemFontOfSize:30-(i++)];
+			if(i == 1) font = [NSFont systemFontOfSize:40];
 			NSAttributedString *row = [NSAttributedString attributedStringWithFont:font forFormat:@"%.0f\n", [[val objectAtIndex:1] floatValue]];
 			return [soFar attributedStringByAppending:row];
 		}];
